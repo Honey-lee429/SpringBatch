@@ -1,0 +1,10 @@
+Cursor
+    lê resgistro no banco de dados e os guardam em memória
+    mais rápido
+    mais memória
+    preço mais alto
+
+Paging
+    Lê todos os registros em apenas uma página, e tem seu tamanho limitado
+    mais lento
+    menos memória

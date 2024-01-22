@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="PrimeiroJobSpringBatch" />
+        <module name="JdbcPagingReaderJob" />
+        <module name="ArquivoMultiplosFormatosJob" />
+        <module name="ArquivoMultiplosArquivosJob" />
+        <module name="JdbcCursorReaderJob" />
+        <module name="EnvioPromocoesClientesJob" />
+        <module name="ProcessadorClassifierJob" />
+        <module name="ArquivoDelimitadoJob (1)" />
+        <module name="ArquivoLarguraFixaJob" />
+        <module name="ArquivoDelimitadoJob" />
+        <module name="FaturaCartaoCreditoJob" />
+        <module name="DemonstrativoOrcamentarioJob" />
+        <module name="SkipExceptionJob" />
+        <module name="ProcessadorValidacaoJob" />
+        <module name="ProcessadorScriptJob" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ArquivoDelimitadoJob" target="18" />
+      <module name="ArquivoDelimitadoJob (1)" target="18" />
+      <module name="ArquivoLarguraFixaJob" target="18" />
+      <module name="ArquivoMultiplosArquivosJob" target="1.8" />
+      <module name="ArquivoMultiplosFormatosJob" target="1.8" />
+      <module name="DemonstrativoOrcamentarioJob" target="18" />
+      <module name="EnvioPromocoesClientesJob" target="1.8" />
+      <module name="FaturaCartaoCreditoJob" target="1.8" />
+      <module name="JdbcCursorReaderJob" target="1.8" />
+      <module name="JdbcPagingReaderJob" target="1.8" />
+      <module name="PrimeiroJobSpringBatch" target="1.8" />
+      <module name="ProcessadorClassifierJob" target="18" />
+      <module name="ProcessadorScriptJob" target="18" />
+      <module name="ProcessadorValidacaoJob" target="18" />
+      <module name="SkipExceptionJob" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ArquivoDelimitadoJob" options="-parameters" />
+      <module name="ArquivoDelimitadoJob (1)" options="-parameters" />
+      <module name="ArquivoLarguraFixaJob" options="-parameters" />
+      <module name="ArquivoMultiplosArquivosJob" options="-parameters" />
+      <module name="ArquivoMultiplosFormatosJob" options="-parameters" />
+      <module name="DemonstrativoOrcamentarioJob" options="-parameters" />
+      <module name="EnvioPromocoesClientesJob" options="-parameters" />
+      <module name="FaturaCartaoCreditoJob" options="-parameters" />
+      <module name="JdbcCursorReaderJob" options="-parameters" />
+      <module name="JdbcPagingReaderJob" options="-parameters" />
+      <module name="PrimeiroJobSpringBatch" options="-parameters" />
+      <module name="ProcessadorClassifierJob" options="-parameters" />
+      <module name="ProcessadorScriptJob" options="-parameters" />
+      <module name="ProcessadorValidacaoJob" options="-parameters" />
+      <module name="SkipExceptionJob" options="-parameters" />
+    </option>
+  </component>
+</project>

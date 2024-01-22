@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/EnvioPromocoesClientesJob/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/EnvioPromocoesClientesJob/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/EscritoresBatch/ArquivoDelimitadoJob/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/EscritoresBatch/ArquivoDelimitadoJob/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/FaturaCartaoCreditoJob/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/FaturaCartaoCreditoJob/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/LeitoresBatch/ArquivoDelimitadoJob/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/LeitoresBatch/ArquivoDelimitadoJob/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/LeitoresBatch/ArquivoLarguraFixaJob/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/LeitoresBatch/ArquivoLarguraFixaJob/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/LeitoresBatch/ArquivoMultiplosArquivosJob/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/LeitoresBatch/ArquivoMultiplosFormatosJob/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/LeitoresBatch/DemonstrativoOrcamentarioJob/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/LeitoresBatch/DemonstrativoOrcamentarioJob/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/LeitoresBatch/JdbcCursorReaderJob/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/LeitoresBatch/JdbcCursorReaderJob/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/LeitoresBatch/JdbcPagingReaderJob/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/LeitoresBatch/JdbcPagingReaderJob/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/LeitoresBatch/SkipExceptionJob/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/LeitoresBatch/SkipExceptionJob/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PrimeiroJobSpringBatch/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ProcessadoresBatch/ProcessadorClassifierJob/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ProcessadoresBatch/ProcessadorClassifierJob/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ProcessadoresBatch/ProcessadorScriptJob/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ProcessadoresBatch/ProcessadorScriptJob/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ProcessadoresBatch/ProcessadorValidacaoJob/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ProcessadoresBatch/ProcessadorValidacaoJob/src/main/resources" charset="UTF-8" />
+  </component>
+</project>

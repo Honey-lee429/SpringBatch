@@ -1,0 +1,20 @@
+ValidationItemProcessor
+    quando precisar validar os atributos da tabelas através do validation do hibernate (@NotNull, @NotBlank, @Size, etc)
+
+ValidatingItemProcessor
+    Permite implementar o validador de regras, validar um item lido e filtrá-lo caso seja inválido
+
+ScriptItemProcessor
+    Permite executar um script e recebe como argumento um item processado e gera como saida o resultado da execução do script
+    O script deve ser um arquivo (javascript, ruby,shell)
+
+CompositeItemProcessor
+    Componente que permite encadear diversos processadores para montar uma cadeia de responsabilidades
+    Quando há uma lógica de processamento complexa, que precisa ser divida em diversos processadores, cada um com sua responsabilidade
+
+ClassifierCompositeItemProcessor
+    Semelhantes ao CompositeItemProcessor, ao invés de chamar todos os processadores, o Classifier vai classificar e chamar
+    o processador adequado dependendo do item recebido
+
+Processador costumizado
+

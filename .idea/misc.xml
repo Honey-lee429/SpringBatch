@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/EnvioPromocoesClientesJob/pom.xml" />
+        <option value="$PROJECT_DIR$/EscritoresBatch/ArquivoDelimitadoJob/pom.xml" />
+        <option value="$PROJECT_DIR$/FaturaCartaoCreditoJob/pom.xml" />
+        <option value="$PROJECT_DIR$/PrimeiroJobSpringBatch/pom.xml" />
+        <option value="$PROJECT_DIR$/LeitoresBatch/ArquivoLarguraFixaJob/pom.xml" />
+        <option value="$PROJECT_DIR$/LeitoresBatch/ArquivoDelimitadoJob/pom.xml" />
+        <option value="$PROJECT_DIR$/LeitoresBatch/DemonstrativoOrcamentarioJob/pom.xml" />
+        <option value="$PROJECT_DIR$/LeitoresBatch/ArquivoMultiplosFormatosJob/pom.xml" />
+        <option value="$PROJECT_DIR$/LeitoresBatch/ArquivoMultiplosArquivosJob/pom.xml" />
+        <option value="$PROJECT_DIR$/LeitoresBatch/JdbcCursorReaderJob/pom.xml" />
+        <option value="$PROJECT_DIR$/LeitoresBatch/JdbcPagingReaderJob/pom.xml" />
+        <option value="$PROJECT_DIR$/LeitoresBatch/SkipExceptionJob/pom.xml" />
+        <option value="$PROJECT_DIR$/ProcessadoresBatch/ProcessadorClassifierJob/pom.xml" />
+        <option value="$PROJECT_DIR$/ProcessadoresBatch/ProcessadorScriptJob/pom.xml" />
+        <option value="$PROJECT_DIR$/ProcessadoresBatch/ProcessadorValidacaoJob/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="openjdk-20" project-jdk-type="JavaSDK" />
+  <component name="ProjectType">
+    <option name="id" value="jpab" />
+  </component>
+</project>

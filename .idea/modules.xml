@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/EscritoresBatch/ArquivoDelimitadoJob/ArquivoDelimitadoJob.iml" filepath="$PROJECT_DIR$/EscritoresBatch/ArquivoDelimitadoJob/ArquivoDelimitadoJob.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LeitoresBatch/ArquivoDelimitadoJob/ArquivoDelimitadoJob (1).iml" filepath="$PROJECT_DIR$/LeitoresBatch/ArquivoDelimitadoJob/ArquivoDelimitadoJob (1).iml" />
+      <module fileurl="file://$PROJECT_DIR$/LeitoresBatch/ArquivoLarguraFixaJob/ArquivoLarguraFixaJob.iml" filepath="$PROJECT_DIR$/LeitoresBatch/ArquivoLarguraFixaJob/ArquivoLarguraFixaJob.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LeitoresBatch/ArquivoMultiplosArquivosJob/ArquivoMultiplosArquivosJob.iml" filepath="$PROJECT_DIR$/LeitoresBatch/ArquivoMultiplosArquivosJob/ArquivoMultiplosArquivosJob.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LeitoresBatch/ArquivoMultiplosFormatosJob/ArquivoMultiplosFormatosJob.iml" filepath="$PROJECT_DIR$/LeitoresBatch/ArquivoMultiplosFormatosJob/ArquivoMultiplosFormatosJob.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Batch.iml" filepath="$PROJECT_DIR$/.idea/Batch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LeitoresBatch/DemonstrativoOrcamentarioJob/DemonstrativoOrcamentarioJob.iml" filepath="$PROJECT_DIR$/LeitoresBatch/DemonstrativoOrcamentarioJob/DemonstrativoOrcamentarioJob.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EnvioPromocoesClientesJob/EnvioPromocoesClientesJob.iml" filepath="$PROJECT_DIR$/EnvioPromocoesClientesJob/EnvioPromocoesClientesJob.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FaturaCartaoCreditoJob/FaturaCartaoCreditoJob.iml" filepath="$PROJECT_DIR$/FaturaCartaoCreditoJob/FaturaCartaoCreditoJob.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LeitoresBatch/JdbcCursorReaderJob/JdbcCursorReaderJob.iml" filepath="$PROJECT_DIR$/LeitoresBatch/JdbcCursorReaderJob/JdbcCursorReaderJob.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LeitoresBatch/JdbcPagingReaderJob/JdbcPagingReaderJob.iml" filepath="$PROJECT_DIR$/LeitoresBatch/JdbcPagingReaderJob/JdbcPagingReaderJob.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PrimeiroJobSpringBatch/PrimeiroJobSpringBatch.iml" filepath="$PROJECT_DIR$/PrimeiroJobSpringBatch/PrimeiroJobSpringBatch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ProcessadoresBatch/ProcessadorClassifierJob/ProcessadorClassifierJob.iml" filepath="$PROJECT_DIR$/ProcessadoresBatch/ProcessadorClassifierJob/ProcessadorClassifierJob.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ProcessadoresBatch/ProcessadorScriptJob/ProcessadorScriptJob.iml" filepath="$PROJECT_DIR$/ProcessadoresBatch/ProcessadorScriptJob/ProcessadorScriptJob.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ProcessadoresBatch/ProcessadorValidacaoJob/ProcessadorValidacaoJob.iml" filepath="$PROJECT_DIR$/ProcessadoresBatch/ProcessadorValidacaoJob/ProcessadorValidacaoJob.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LeitoresBatch/SkipExceptionJob/SkipExceptionJob.iml" filepath="$PROJECT_DIR$/LeitoresBatch/SkipExceptionJob/SkipExceptionJob.iml" />
+    </modules>
+  </component>
+</project>
