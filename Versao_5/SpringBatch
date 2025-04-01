@@ -1,0 +1,182 @@
+https://docs.spring.io/spring-batch/docs/5.0.6/reference/html/whatsnew.html
+
+what’s new in spring batch 5.0
+spring batch 5.0 has the following major themes:
+
+JAVA 17 REQUIREMENT
+
+@enablebatchprocessing NO LONGER REQUIRED
+previously, @enablebatchprocessing could be used to enable spring boot’s auto-configuration of spring batch. it is no
+longer required and should be removed from applications that want to use boot’s auto-configuration. a bean that is
+annotated with @enablebatchprocessing or that extends batch’s defaultbatchconfiguration can now be defined to tell the
+auto-configuration to back off, allowing the application to take complete control of how batch is configured.
+
+https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-3.0.0-M5-Release-Notes
+
+TAMANHO CHUNCK
+quanto maior o chunk
+✔ maior a velocidade de tempo de execução
+✔ maior o uso de memória. Se utilizarmos maquinas na nuvem que possuem recursos limitados é possível que o processo pare
+✔ se der erro em um, todos os registros do chunk terão roolback. Afeta a capacidade de reinicialização do job
+
+
+MULTIPLE BATCH JOBS
+Running multiple batch jobs is no longer supported.
+If the auto-configuration detects a single job is, it will be executed on startup.
+If multiple jobs are found in the context, a job name to execute on startup must be supplied by the user using the
+spring.batch.job.name property.
+We can continue supporting packaging multiple jobs in the application, but when that's the case we should require users
+to identify via a property which one job they want to be launched. This will require us to deprecate
+spring.batch.job.names and replace it with spring.batch.job.name (or spring.batch.job-name).
+
+
+TRANSACTION MANAGER
+for multiplos datasource
+
+RESTART SPRING BATCH
+O restart do Spring Batch permite reiniciar trabalhos em lote que falharam ou foram interrompidos. Isso é possível
+através do JobRepository e Persistent State. O Spring não roda os chunks que comitaram novamente, roda a partir do chunk
+que deu erro.
+
+TRANSAÇÕES DISTRIBUÍDAS <atomikos>
+injetar a biblioteca do atomikos no pom
+criar o XADataSource para garantir que todos os bancos de dados tenham atomicitade
+
+VARIOS STEPS
+anotar no job com @Qualifier para identificar o step
+podemos encapsular varios steps que contenha a mesma logica de negocio com um processo chamado Flow
+https://github.com/giuliana-bezerra/springbatch-flows/blob/main/src/main/java/br/com/giulianabezerra/sbflows/BatchConfig.java
+
+📌 Por que usar CompositeItemWriter?
+Em vez de misturar a lógica de atualização do banco e o envio de eventos Kafka em um único writer, podemos separá-los.
+
+Benefícios do CompositeItemWriter:
+✅ Separa responsabilidades: Um writer só atualiza o banco e outro só envia para o Kafka.
+✅ Facilita a manutenção: Podemos modificar cada writer sem impactar o outro.
+✅ Reutilização: Se precisar usar apenas um dos writers em outro batch, fica mais fácil.
+
+✅ Vantagens do CompositeItemWriter
+✔ Separa as responsabilidades (Single Responsibility Principle - SRP)
+✔ Facilita a manutenção e testes individuais de cada writer
+✔ Garante que ambos os writers sejam executados para cada item processado
+✔ Tratamento de Erros mais Granular: Se uma operação falhar, você pode gerenciar a transação de forma mais controlada.
+✔ Reutilização de Código: Facilita a reutilização dos ItemWriters em outros jobs.
+
+✅ Desvantagens / Desafios do CompositeItemWriter
+🔸 Não há garantia de atomicidade: O primeiro writer pode executar, mas o segundo pode falhar (exemplo: banco atualizado, mas Kafka falha).
+🔸 Se um writer falhar, o rollback pode ser problemático:
+
+O JdbcBatchItemWriter executa um commit automático por padrão.
+O Kafka não tem rollback automático; se um evento falhar, ele pode ser perdido.
+🔸 Pode ser mais difícil controlar transações: Se o banco atualiza mas o Kafka falha, os dados
+
+🛠️ Como Resolver Esse Problema?
+Se você deseja garantir que ambas as operações sejam executadas de forma consistente, algumas abordagens podem ajudar:
+1️⃣ Spring Batch + Transaction Management
+✅ Quando usar?
+Quando pequenas inconsistências são aceitáveis (exemplo: um evento pode ser perdido em caso de falha).
+Quando quer manter a implementação simples e já usa transações no banco.
+❌ Problema:
+O Kafka não faz parte da transação. Se a gravação no banco for bem-sucedida, mas o Kafka falhar, não há rollback automático.
+💡 Recomendado quando o Kafka não precisa ter garantia 100% de entrega.
+
+2️⃣ Outbox Pattern + CDC (Change Data Capture)
+✅ Quando usar?
+Se garantia forte de entrega é essencial.
+Se NÃO pode perder mensagens no Kafka de jeito nenhum.
+Se já usa uma ferramenta de CDC (como Debezium ou Kafka Connect) no sistema.
+💡 Melhor abordagem para garantir atomicidade entre banco de dados e Kafka.
+💡 Usado em arquiteturas com alto volume de eventos e necessidade de confiabilidade.
+❌ Problema:
+Introduz mais complexidade no sistema. Precisa criar uma tabela
+Precisa de um processo extra para monitorar a tabela outbox e enviar eventos.
+
+3️⃣ Listener para Enviar Kafka Após o Commit
+✅ Quando usar?
+Se quiser garantir que Kafka só será chamado depois que o banco foi atualizado.
+Se precisa de mais controle sobre quando os eventos são disparados.
+Quando já usa um Spring Batch Listener para acompanhar a execução dos Steps.
+❌ Problema:
+Não resolve o problema de falhas no Kafka (se falhar depois do commit, o evento pode ser perdido).
+💡 Boa opção se a entrega no Kafka não precisa ser garantida 100%, mas quer evitar chamar Kafka antes do commit do banco.
+
+4️⃣ Usar um ItemWriter personalizado que realize as duas operações dentro de um único método
+Se você quer garantir que ambas as operações sejam consistentes dentro de um único método (garantir que tanto a
+atualização do banco quanto o envio para o Kafka ocorram), a melhor abordagem é:
+✅ Usar @Transactional para gerenciar a atualização do banco e o envio para Kafka no mesmo método. O @Transactional
+assegura que as duas operações sejam feitas na mesma transação.
+
+No Spring, podemos usar Spring Transactions para garantir que o banco de dados e o Kafka fiquem sincronizados dentro
+de um único método.
+📌 O método write() do ItemWriter é chamado dentro de uma transação única, porque:
+✅ O @Transactional no write() garante que o banco e o Kafka sejam processados juntos.
+✅ Se o banco falhar, nada será enviado ao Kafka (rollback).
+✅ Se o Kafka falhar, o banco também será revertido automaticamente.
+
+Isso faz com que as duas operações sejam sempre executadas juntas. Se alguma delas falhar, nenhuma das duas será confirmada!
+
+Ex.:
+@Component
+public class ExpirarOfertasWriter implements ItemWriter<Oferta> {
+
+    private final OfertaRepository ofertaRepository;
+    private final KafkaTemplate<String, OfertaEvento> kafkaTemplate;
+
+    public ExpirarOfertasWriter(OfertaRepository ofertaRepository, KafkaTemplate<String, OfertaEvento> kafkaTemplate) {
+        this.ofertaRepository = ofertaRepository;
+        this.kafkaTemplate = kafkaTemplate;
+    }
+
+    @Override
+    @Transactional // 🚀 Garante que o banco e Kafka sejam atualizados juntos!
+    public void write(Chunk<? extends Oferta> chunk) throws Exception {
+        List<Oferta> ofertas = chunk.getItems();
+
+        // Atualiza o banco de dados
+        for (Oferta oferta : ofertas) {
+            oferta.setStatus("expirado");
+            ofertaRepository.save(oferta);
+        }
+
+        // Publica os eventos no Kafka
+        for (Oferta oferta : ofertas) {
+            OfertaEvento evento = new OfertaEvento(oferta.getId(), oferta.getStatus());
+            kafkaTemplate.send("tarifa-kafka", evento);
+        }
+    }
+}
+
+🔥 Alternativa: Garantir Kafka Após o Commit do Banco
+Se você quiser que o Kafka só seja chamado após o commit da transação, podemos modificar o código para usar TransactionSynchronizationManager:
+import org.springframework.transaction.support.TransactionSynchronization;
+import org.springframework.transaction.support.TransactionSynchronizationManager;
+
+@Override
+@Transactional
+public void write(Chunk<? extends Oferta> chunk) throws Exception {
+    List<Oferta> ofertas = chunk.getItems();
+
+    // Atualiza o banco de dados primeiro
+    for (Oferta oferta : ofertas) {
+        oferta.setStatus("expirado");
+        ofertaRepository.save(oferta);
+    }
+
+    // Registra o envio ao Kafka APÓS o commit do banco
+    TransactionSynchronizationManager.registerSynchronization(new TransactionSynchronization() {
+        @Override
+        public void afterCommit() {
+            for (Oferta oferta : ofertas) {
+                OfertaEvento evento = new OfertaEvento(oferta.getId(), oferta.getStatus());
+                kafkaTemplate.send("tarifa-kafka", evento);
+            }
+        }
+    });
+}
+
+
+
+
+
+
+
